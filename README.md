@@ -2,8 +2,6 @@
 
 Submission to **MICCAI FLARE 2026, Task 1 (whole-body pan-cancer segmentation in CT)**.
 
-L. Nayak, S. L. Ebrahimpour, J. Jiang — Memorial Sloan Kettering Cancer Center, New York
-
 We start from the nnU-Net configuration of the FLARE24 Task 1 winning solution ([Huang et al.](https://github.com/Ziyan-Huang/FLARE24)) and make two changes:
 
 1. **Patch depth reduced from 96 to 64.** FLARE26 scans are much shorter than FLARE24 scans (median 149 slices, as few as 62 after resampling to 3 mm). With rotation augmentation, the original 96-slice patch inflates to ~173 voxels of sampling depth, which exceeds most training volumes and prevented training.
