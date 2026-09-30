@@ -41,7 +41,7 @@ Ablations (see the paper for details):
 | `run_inference.py` | I/O adapter for the evaluation harness: converts input `.npz` → `.nii.gz`, runs `nnUNetv2_predict`, converts output back to `.npz`. Also accepts `.nii.gz` input directly. |
 | `predict.sh` | Container entry point; sets `nnUNet_results` and calls `run_inference.py`. |
 | `Dockerfile` | Builds the inference container. |
-| `MICCAI_FLARE26.pdf` | Method paper. |
+
 
 ---
 
