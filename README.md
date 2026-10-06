@@ -122,7 +122,7 @@ The labels are binary:
 
 The main changes were simple:
 
-- use a **smaller patch depth** for the shorter FLARE 2026 scans
+- use a **smaller patch depth** 
 - use a **coarse 3 × 2 × 2 mm spacing**
 - add **Tversky loss** to reduce false positives
 
