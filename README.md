@@ -4,7 +4,7 @@
 
 This repository contains our submission to **MICCAI FLARE 2026 Task 1**, which focuses on **whole-body pan-cancer segmentation in CT images**.
 
-Our team from **Memorial Sloan Kettering Cancer Center** received the **Outstanding Winner Award** in the FLARE 2026 Challenge.
+Our team received the **Outstanding Winner Award** in the FLARE 2026 Challenge.
 
 **Challenge:** https://www.codabench.org/competitions/7149/
 
