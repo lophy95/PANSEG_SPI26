@@ -16,7 +16,6 @@ The final model uses a compact **4-stage PlainConvUNet** with coarse image spaci
 
 ## Highlights
 
-- 🏆 **Outstanding Winner Award — FLARE 2026**
 - **4-stage PlainConvUNet**
 - Feature channels: **32 / 64 / 128 / 256**
 - Target spacing: **3.0 × 2.0 × 2.0 mm**
