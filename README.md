@@ -21,7 +21,7 @@ docker --version
 ## 2. Load the Docker image
 
 ```bash
-docker load -i <team_name>.tar.gz
+docker load -i panseg_spi26.tar.gz
 ```
 
 ## 4. Prepare your data
