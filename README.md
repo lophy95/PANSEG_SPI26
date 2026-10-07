@@ -185,8 +185,6 @@ and increased the number of cases with DSC above 0.5 from:
 26 → 29
 ```
 
-:chatgpt-content-reference{index="11"} :chatgpt-content-reference{index="12"}
-
 ---
 
 ## Loss ablation
