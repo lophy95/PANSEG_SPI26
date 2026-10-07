@@ -14,20 +14,6 @@ The final model uses a compact **4-stage PlainConvUNet** with coarse image spaci
 
 ---
 
-## Highlights
-
-- **4-stage PlainConvUNet**
-- Feature channels: **32 / 64 / 128 / 256**
-- Target spacing: **3.0 × 2.0 × 2.0 mm**
-- Patch size: **64 × 128 × 128**
-- Loss: **Dice + Cross-Entropy + 0.3 × Tversky**
-- Trained from scratch on **17,562 usable CT scans**
-- Public validation DSC: **0.492 ± 0.337**
-- Hidden validation inference: **~2.8 s per case**
-- Single-GPU training and inference
-
----
-
 ## Method
 
 Our implementation is based on **nnU-Net v2** and follows the general configuration used by the previous FLARE Task 1 winning solution.
@@ -63,8 +49,6 @@ The complete training configuration is:
 | Loss | Dice + CE + 0.3 × Tversky |
 | Training GPU | NVIDIA L40S |
 
-:chatgpt-content-reference{index="2"}
-
 ---
 
 ## Why a smaller patch depth?
@@ -93,7 +77,7 @@ The final patch size is:
 64 × 128 × 128
 ```
 
-This resolved the geometry mismatch without changing the rest of the network configuration. :chatgpt-content-reference{index="3"}
+This resolved the geometry mismatch without changing the rest of the network configuration. 
 
 ---
 
@@ -121,7 +105,7 @@ We also evaluated the finer spacing automatically selected by the nnU-Net experi
 2.0 × 0.75 × 0.75 mm
 ```
 
-The finer spacing performed worse and was substantially more expensive computationally. Mean DSC decreased from **0.477 to 0.432**, GPU memory increased from **1403 MiB to 3671 MiB**, and inference time increased from **4.1 s to 33 s per case**. Training time increased from approximately **10 h to 21 h**. :chatgpt-content-reference{index="4"} :chatgpt-content-reference{index="5"}
+The finer spacing performed worse and was substantially more expensive computationally. Mean DSC decreased from **0.477 to 0.432**, GPU memory increased from **1403 MiB to 3671 MiB**, and inference time increased from **4.1 s to 33 s per case**. Training time increased from approximately **10 h to 21 h**. 
 
 ### Spacing ablation
 
@@ -159,7 +143,7 @@ TI = --------------------------------
 
 the larger value of `alpha` places greater emphasis on **false-positive predictions**.
 
-This is particularly important because the validation set contains lesion-free scans, where any predicted foreground is penalized. :chatgpt-content-reference{index="6"}
+This is particularly important because the validation set contains lesion-free scans, where any predicted foreground is penalized. 
 
 ---
 
@@ -171,14 +155,6 @@ The FLARE 2026 training set contains:
 17,575 labelled CT volumes
 ```
 
-Before preprocessing, all volumes were checked for readability.
-
-Thirteen cases could not be loaded because of invalid, non-orthonormal image-direction information in SimpleITK/ITK, leaving:
-
-```text
-17,562 usable training cases
-```
-
 The task uses binary segmentation labels:
 
 ```text
@@ -186,7 +162,7 @@ The task uses binary segmentation labels:
 1 — Lesion
 ```
 
-Only the primary lesion is annotated in each case; other visible disease, including metastases, may be present without corresponding labels. :chatgpt-content-reference{index="7"}
+Only the primary lesion is annotated in each case; other visible disease, including metastases, may be present without corresponding labels. 
 
 ---
 
@@ -201,7 +177,7 @@ Batch size            : 2
 Epochs                 : 2000
 ```
 
-No external pretrained weights were used. :chatgpt-content-reference{index="8"}
+No external pretrained weights were used. 
 
 Training the final coarse-spacing configuration required approximately:
 
@@ -215,13 +191,11 @@ on a single:
 NVIDIA L40S
 ```
 
-:chatgpt-content-reference{index="9"}
-
 ---
 
 ## Public validation results
 
-All models were evaluated on the same **50-case public validation set** using a single **NVIDIA L40S GPU**, with test-time augmentation disabled. :chatgpt-content-reference{index="10"}
+All models were evaluated on the same **50-case public validation set** using a single **NVIDIA L40S GPU**, with test-time augmentation disabled. 
 
 | Model | DSC | Zero-DSC cases | Cases with DSC > 0.5 | GPU memory | Time / case |
 |---|---:|---:|---:|---:|---:|
@@ -355,20 +329,6 @@ Our final model therefore uses a compact **4-stage architecture** together with 
 
 ---
 
-## Failure analysis
-
-Six of the 50 public validation cases obtained a DSC of exactly zero.
-
-Importantly, these were not all trivial empty predictions. In every zero-DSC case, both the predicted and ground-truth lesion volumes were non-trivial.
-
-Because the dataset annotates only the **primary lesion**, a model prediction corresponding to another visible abnormality or unannotated disease may still be scored as a false positive.
-
-This partial-label setting is therefore an important consideration when interpreting case-level DSC values. :chatgpt-content-reference{index="16"}
-
-For detailed case-level analysis, please refer to the accompanying paper.
-
----
-
 ## Final configuration
 
 ```yaml
@@ -424,7 +384,7 @@ Our experiments indicate that a relatively simple configuration can provide a st
 Dice + CE + 0.3 × Tversky
 ```
 
-The coarse spacing was both **more accurate and substantially more efficient** than the finer nnU-Net-planned spacing in our experiments, while the Tversky term provided a modest numerical improvement by placing greater emphasis on false-positive control. :chatgpt-content-reference{index="17"}
+The coarse spacing was both **more accurate and substantially more efficient** than the finer nnU-Net-planned spacing in our experiments, while the Tversky term provided a modest numerical improvement by placing greater emphasis on false-positive control. 
 
 ---
 
@@ -439,9 +399,6 @@ The coarse spacing was both **more accurate and substantially more efficient** t
 - L. Nayak
 - S. L. Ebrahimpour
 - J. Jiang
-
-**Memorial Sloan Kettering Cancer Center, New York**
-
 ---
 
 ## Citation
@@ -459,59 +416,10 @@ If you use this repository or build on this work, please cite:
 
 Please update this entry with the official proceedings information and DOI once the final publication record is available.
 
----
-
-## References
-
-### [1] FLARE24 Task 1 winning solution
-
-Z. Huang et al.  
-**FLARE24 Task 1 Winning Solution.**
-
-https://github.com/Ziyan-Huang/FLARE24
-
-### [2] FLARE25 baseline model
-
-FLARE Challenge Organizers.  
-**FLARE25 Task 1 baseline model (`flare25_gmai`).**
-
-https://github.com/Ziyan-Huang/FLARE24
-
-### [3] nnU-Net
-
-F. Isensee, P. F. Jaeger, S. A. A. Kohl, J. Petersen, K. H. Maier-Hein.  
-**nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation.**  
-*Nature Methods*, 18(2), 203–211, 2021.
-
-https://doi.org/10.1038/s41592-020-01008-z
-
-### [4] Boundary loss
-
-H. Kervadec, J. Bouchtiba, C. Desrosiers, E. Granger, J. Dolz, I. B. Ayed.  
-**Boundary loss for highly unbalanced segmentation.**  
-*Medical Imaging with Deep Learning (MIDL)*, 2019.
-
-### [5] Tversky loss
-
-S. S. M. Salehi, D. Erdogmus, A. Gholipour.  
-**Tversky Loss Function for Image Segmentation Using 3D Fully Convolutional Deep Networks.**  
-*Machine Learning in Medical Imaging*, pp. 379–387, 2017.
-
-https://doi.org/10.1007/978-3-319-67389-9_44
-
-### [6] FLARE 2026 Challenge
-
-**Foundation Models for Pan-Cancer Segmentation in CT Images — MICCAI 2026 Challenge**
-
-https://www.codabench.org/competitions/7149/
-
----
 
 ## Acknowledgements
 
 We thank the **FLARE 2026 organizers** for providing the dataset and evaluation platform.
-
-This work builds on the **nnU-Net** framework and was inspired by the efficient architecture and training configuration of the **FLARE24 Task 1 winning solution**. :chatgpt-content-reference{index="18"}
 
 ---
 
