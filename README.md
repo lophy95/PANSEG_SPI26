@@ -51,36 +51,6 @@ The complete training configuration is:
 
 ---
 
-## Why a smaller patch depth?
-
-The earlier FLARE configuration used a patch size of:
-
-```text
-96 × 128 × 128
-```
-
-However, the FLARE 2026 scans are substantially shorter in the through-plane direction. After resampling to 3 mm, the dataset has a median depth of approximately **149 slices**, with some scans containing as few as **62 slices**.
-
-With rotation augmentation enabled, nnU-Net expands the effective sampling depth to approximately **173 voxels**, which exceeded the available depth in many cases and prevented stable training with the original patch geometry.
-
-We therefore reduced the patch depth from:
-
-```text
-96 → 64
-```
-
-while keeping the in-plane dimensions unchanged.
-
-The final patch size is:
-
-```text
-64 × 128 × 128
-```
-
-This resolved the geometry mismatch without changing the rest of the network configuration. 
-
----
-
 ## Coarse spatial resolution
 
 The final model uses a target spacing of:
