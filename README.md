@@ -10,7 +10,7 @@ Our team received the **Outstanding Winner Award** in the FLARE 2026 Challenge.
 
 Our method is designed around the key requirement of the challenge: achieving strong segmentation performance while remaining **fast, reliable, and computationally efficient** on large 3D CT volumes.
 
-The final model uses a compact **4-stage PlainConvUNet** with coarse image spacing, a reduced patch depth, and an additional **Tversky loss** term to place greater emphasis on false-positive control. The model was trained entirely from scratch using the FLARE 2026 training data, without external pretrained weights. :chatgpt-content-reference{index="1"}
+The final model uses a compact **4-stage PlainConvUNet** with coarse image spacing, a reduced patch depth, and an additional **Tversky loss** term to place greater emphasis on false-positive control. The model was trained entirely from scratch using the FLARE 2026 training data, without external pretrained weights. 
 
 ---
 
