@@ -61,17 +61,6 @@ Masks are written to `outputs/` without the `_0000` suffix (`case_0001_0000.nii.
 |---|---|
 | `0` | Background |
 | `1` | Lesion |
-
----
-
-## Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| `outputs/` is empty | Check that inputs end in `_0000.nii.gz`. |
-| Permission denied on `outputs/` | Run `chmod 777 outputs/`. |
-| Container name already in use | Change `--name`, or run `docker rm panseg`. |
-
 ---
 
 ## Citation
