@@ -1,5 +1,3 @@
-<div align="center">
-
 # Coarse-Spacing nnU-Net with Tversky Loss for Pan-Cancer CT Segmentation
 
 🏆 **Outstanding Winner Award — FLARE 2026 Challenge (MICCAI 2026), Task 1**
@@ -13,7 +11,7 @@
 
 Whole-body pan-cancer lesion segmentation in CT, packaged as a ready-to-run Docker image.
 
-<p align="center"><img src="fig/nnUNet_pipeline.png" alt="Pipeline overview" width="100%"></p>
+<p align="center"><img src="nnUNet_pipeline.png" alt="Pipeline overview" width="100%"></p>
 
 | | |
 |---|---|
