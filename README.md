@@ -9,32 +9,9 @@
 
 </div>
 
-A fast, lightweight nnU-Net for detecting and segmenting tumors anywhere in the body from CT.
+Whole-body pan-cancer lesion segmentation in CT. The model is a compact 4-stage nnU-Net v2 (PlainConvUNet) trained at 3.0 × 2.0 × 2.0 mm spacing with Dice + CE + 0.3 × Tversky loss. It runs at roughly **3–4 s per case** using about **1.4 GB of GPU memory**.
+
 <p align="center"><img src="nnUNet_pipeline.png" alt="Pipeline overview" width="100%"></p>
-
-| | |
-|---|---|
-| **Task** | Binary lesion segmentation (whole-body CT) |
-| **Architecture** | 4-stage nnU-Net v2 (`PlainConvUNet`) |
-| **Target spacing** | 3.0 × 2.0 × 2.0 mm |
-| **Loss** | Dice + CE + 0.3 × Tversky (α = 0.7, β = 0.3) |
-| **Inference** | ~3–4 s per case · ~1.4 GB GPU memory |
-
----
-
-## Method
-
-**Coarse spacing.** Standard nnU-Net resamples to the dataset's median spacing. We resample to a coarser **3.0 × 2.0 × 2.0 mm** instead (configuration `3d_fullres_2mm`). Each patch then covers more of the body, which gives more anatomical context and greatly reduces runtime and memory. nnU-Net's automatic planning produces a compact 4-stage network at this spacing. All other preprocessing, including CT intensity normalization, follows nnU-Net defaults.
-
-**Tversky loss.** We add 0.3 × Tversky to the standard Dice + CE loss. With α = 0.7 (false positives) and β = 0.3 (false negatives), it penalizes false positives more strongly, which suppresses spurious detections across whole-body scans.
-
-| Training setting | Value |
-|---|---|
-| Epochs | 2000 |
-| Initial learning rate | 1e-3 |
-| Folds | `all` (single model) |
-| Test-time augmentation | None |
-| Everything else | nnU-Net v2 defaults |
 
 ---
 
