@@ -9,8 +9,7 @@
 
 </div>
 
-Whole-body pan-cancer lesion segmentation in CT, packaged as a ready-to-run Docker image.
-
+A fast, lightweight nnU-Net for detecting and segmenting tumors anywhere in the body from CT.
 <p align="center"><img src="nnUNet_pipeline.png" alt="Pipeline overview" width="100%"></p>
 
 | | |
