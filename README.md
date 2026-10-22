@@ -79,6 +79,4 @@ Please also cite [nnU-Net](https://github.com/MIC-DKFZ/nnUNet).
 
 ## Acknowledgements
 
-We thank the FLARE 2026 organizers for the dataset and evaluation platform, and the nnU-Net authors for their open-source framework.
-
-For questions, please open an issue in this repository.
+We thank the FLARE 2026 organizers for organizing the challenge, and the nnU-Net authors for their open-source framework.
