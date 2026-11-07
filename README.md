@@ -70,13 +70,7 @@ Masks are written to `outputs/` without the `_0000` suffix (`case_0001_0000.nii.
 ## Citation
 
 ```bibtex
-@inproceedings{nayak2026coarse,
-  title     = {Coarse-Spacing nnU-Net with Tversky Loss for Pan-Cancer CT Segmentation},
-  author    = {Nayak, L. and Ebrahimpour, S. L. and Jiang, J.},
-  booktitle = {FLARE 2026 Challenge at MICCAI 2026},
-  year      = {2026},
-  url       = {https://openreview.net/forum?id=Os4tClciJv}
-}
+to be updated
 ```
 
 Please also cite [nnU-Net](https://github.com/MIC-DKFZ/nnUNet).
