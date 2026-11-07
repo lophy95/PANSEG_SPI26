@@ -67,26 +67,6 @@ Masks are written to `outputs/` without the `_0000` suffix (`case_0001_0000.nii.
 
 `plans_as_trained.json` is the nnU-Net plans file used to train the submitted model. It defines the preprocessing and the network. The trained weights are included in the Docker image only.
 
-To retrain the model:
-
-1. Copy the custom trainer into your nnU-Net installation:
-   ```bash
-   cp nnUNetTrainer_Tversky.py $(python -c "import nnunetv2, os; print(os.path.join(nnunetv2.__path__[0], 'training/nnUNetTrainer/variants'))")/
-   ```
-2. Prepare the dataset as `Dataset701_FLARE` in `nnUNet_raw` and extract the fingerprint:
-   ```bash
-   nnUNetv2_extract_fingerprint -d 701
-   ```
-3. Copy the plans file into place (do not run `nnUNetv2_plan_experiment`, which would overwrite it):
-   ```bash
-   cp plans_as_trained.json $nnUNet_preprocessed/Dataset701_FLARE/nnUNetPlans.json
-   ```
-4. Preprocess and train:
-   ```bash
-   nnUNetv2_preprocess -d 701 -c 3d_fullres_2mm -np 8
-   nnUNetv2_train 701 3d_fullres_2mm all -tr nnUNetTrainer_Tversky
-   ```
-
 ## Citation
 
 ```bibtex
