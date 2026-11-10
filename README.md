@@ -64,8 +64,7 @@ Masks are written to `outputs/` without the `_0000` suffix (`case_0001_0000.nii.
 ---
 
 ## Configuration (`plans_as_trained.json`)
-
-`plans_as_trained.json` is the nnU-Net plans file used to train the submitted model. It defines the preprocessing and the network. The trained weights are included in the Docker image only.
+`plans_as_trained.json` is the file used to train the model. It defines the preprocessing and the network. The trained weights are included in the Docker image only.
 
 ## Citation
 
