@@ -1,4 +1,5 @@
-# Coarse-Spacing nnU-Net with Tversky Loss for Pan-Cancer CT Segmentation
+# PanSegLight: A Lightweight nnU-Net for Pan-Cancer CT
+Segmentation
 
 🏆 **Outstanding Winner Award — FLARE 2026 Challenge (MICCAI 2026), Task 1**
 
